@@ -8,7 +8,8 @@ namespace Sistema_Control_Seguimiento_Backend.Profiles
     {
         public UsuarioProfile()
         {
-            CreateMap<Usuario, UsuarioDTO>();
+            CreateMap<Usuario, UsuarioDTO>().ForMember(x => x.NombreRol, 
+                x => x.MapFrom( r => r.Rol.Nombre));
             CreateMap<UsuarioCreacionDTO, Usuario>();
         }
     }
