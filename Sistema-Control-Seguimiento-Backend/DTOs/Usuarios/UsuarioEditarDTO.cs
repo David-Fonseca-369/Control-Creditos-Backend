@@ -2,11 +2,11 @@
 
 namespace Sistema_Control_Seguimiento_Backend.DTOs.Usuarios
 {
-    public class UsuarioCreacionDTO
+    public class UsuarioEditarDTO
     {
         [Required]
         public int IdRol { get; set; }
-        [Required, MaxLength(60)]        
+        [Required, MaxLength(60)]
         public string Nombre { get; set; }
         [Required, MaxLength(60)]
         public string ApellidoPaterno { get; set; }
@@ -18,8 +18,10 @@ namespace Sistema_Control_Seguimiento_Backend.DTOs.Usuarios
         public string Correo { get; set; }
         [MaxLength(255)]
         public string Direccion { get; set; }
-        [Required, MaxLength(60), MinLength(8)]
+        [MinLength(8), MaxLength(60),]
         public string Password { get; set; }
-      
+        [Required]
+        public bool Estado { get; set; }
+
     }
 }

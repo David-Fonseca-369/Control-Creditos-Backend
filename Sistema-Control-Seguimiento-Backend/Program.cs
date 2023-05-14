@@ -31,6 +31,7 @@ namespace Sistema_Control_Seguimiento_Backend
             {
                 mapperConfig.AddProfile(new RolProfile());
                 mapperConfig.AddProfile(new UsuarioProfile());
+                mapperConfig.AddProfile(new AlumnoProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

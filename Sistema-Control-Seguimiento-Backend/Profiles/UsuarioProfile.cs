@@ -11,6 +11,8 @@ namespace Sistema_Control_Seguimiento_Backend.Profiles
             CreateMap<Usuario, UsuarioDTO>().ForMember(x => x.NombreRol, 
                 x => x.MapFrom( r => r.Rol.Nombre));
             CreateMap<UsuarioCreacionDTO, Usuario>();
+            CreateMap<UsuarioEditarDTO, Usuario>();
+            CreateMap<Usuario, UsuarioPreviewDTO>();
         }
     }
 }

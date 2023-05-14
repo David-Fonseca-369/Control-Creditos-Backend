@@ -8,7 +8,7 @@ namespace Sistema_Control_Seguimiento_Backend.Profiles
     {
         public RolProfile()
         {
-            CreateMap<Rol, RolPickerDTO>();
+            CreateMap<Rol, RolSelectorDTO>();
         }
     }
 }

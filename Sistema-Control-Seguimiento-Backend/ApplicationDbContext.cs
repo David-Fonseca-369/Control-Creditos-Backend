@@ -17,10 +17,11 @@ namespace Sistema_Control_Seguimiento_Backend
 
             modelBuilder.ApplyConfiguration(new RolMap());
             modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new AlumnoMap());   
         }
 
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-
+        public DbSet<Alumno> Alumnos { get; set; }
     }
 }

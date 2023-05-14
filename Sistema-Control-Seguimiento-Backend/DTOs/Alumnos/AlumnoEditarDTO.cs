@@ -1,12 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sistema_Control_Seguimiento_Backend.DTOs.Usuarios
+namespace Sistema_Control_Seguimiento_Backend.DTOs.Alumnos
 {
-    public class UsuarioCreacionDTO
+    public class AlumnoEditarDTO
     {
-        [Required]
-        public int IdRol { get; set; }
-        [Required, MaxLength(60)]        
+        [Required, MaxLength(60)]
         public string Nombre { get; set; }
         [Required, MaxLength(60)]
         public string ApellidoPaterno { get; set; }
@@ -14,12 +12,13 @@ namespace Sistema_Control_Seguimiento_Backend.DTOs.Usuarios
         public string ApellidoMaterno { get; set; }
         [MinLength(10), MaxLength(10)]
         public string Telefono { get; set; }
+        [Required, MinLength(10), MaxLength(10)]
+        public string NoCuenta { get; set; }
         [Required, MaxLength(60), EmailAddress]
         public string Correo { get; set; }
-        [MaxLength(255)]
-        public string Direccion { get; set; }
-        [Required, MaxLength(60), MinLength(8)]
+        [MinLength(8), MaxLength(60)]
         public string Password { get; set; }
-      
+        [Required]
+        public bool Estado { get; set; }
     }
 }

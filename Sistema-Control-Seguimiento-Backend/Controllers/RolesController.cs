@@ -20,10 +20,10 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
         }
 
 
-        [HttpGet("todos")]
-        public async Task<ActionResult<List<RolPickerDTO>>> Todos()
+        [HttpGet("rolesSelector")]
+        public async Task<ActionResult<List<RolSelectorDTO>>> RolesSelector()
         {
-            return mapper.Map<List<RolPickerDTO>>(await context.Roles.ToListAsync());
+            return mapper.Map<List<RolSelectorDTO>>(await context.Roles.ToListAsync());
         }
     }
 }
