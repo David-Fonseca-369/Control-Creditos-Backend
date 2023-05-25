@@ -22,6 +22,5 @@ namespace Sistema_Control_Seguimiento_Backend.DTOs.Usuarios
         public string Password { get; set; }
         [Required]
         public bool Estado { get; set; }
-
     }
 }

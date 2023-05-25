@@ -85,16 +85,13 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
             {
                 return BadRequest("El correo ya existe.");
             }
-
-          
-
+         
             CrearPasswordHash(usuarioCreacionDTO.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
             var usuarioMap = mapper.Map<Usuario>(usuarioCreacionDTO);
             usuarioMap.PasswordHash = passwordHash;
             usuarioMap.PasswordSalt = passwordSalt;
             usuarioMap.Estado = true;
-
 
             await context.AddAsync(usuarioMap);
 
