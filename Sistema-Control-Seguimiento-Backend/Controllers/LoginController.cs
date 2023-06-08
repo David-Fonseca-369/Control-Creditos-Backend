@@ -98,7 +98,7 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
             var claims = new List<Claim>()
             {
                 new Claim("idUsuario",usuario.Id.ToString()),
-                new Claim("rol",usuario.IdRol == 1 ? "Administrador" : usuario.IdRol == 2 ? "Instructor" :  usuario.IdRol == 3 ? "Cajero" :"Indefinido"),
+                new Claim("rol",usuario.IdRol == 1 ? "Administrador" : usuario.IdRol == 2 ? "Instructor" : "Indefinido"),
                 new Claim("correo", usuario.Correo)
             };
 

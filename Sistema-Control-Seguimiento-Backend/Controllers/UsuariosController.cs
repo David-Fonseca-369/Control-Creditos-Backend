@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sistema_Control_Seguimiento_Backend.DTOs;
@@ -8,6 +9,8 @@ using Sistema_Control_Seguimiento_Backend.Helpers;
 
 namespace Sistema_Control_Seguimiento_Backend.Controllers
 {
+
+    [Authorize]
     [Route("api/usuarios")]
     [ApiController]
     public class UsuariosController : ControllerBase

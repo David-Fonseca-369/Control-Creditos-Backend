@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sistema_Control_Seguimiento_Backend.DTOs.Roles;
@@ -6,6 +7,8 @@ using Sistema_Control_Seguimiento_Backend.Entities;
 
 namespace Sistema_Control_Seguimiento_Backend.Controllers
 {
+
+    [Authorize]
     [Route("api/roles")]
     [ApiController]
     public class RolesController : ControllerBase
