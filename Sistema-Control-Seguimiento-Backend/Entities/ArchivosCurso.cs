@@ -7,7 +7,7 @@ namespace Sistema_Control_Seguimiento_Backend.Entities
         public int Id { get; set; }
         [Required]
         public int IdCurso { get; set; }
-        [Required, MaxLength(60)]
+        [Required, MaxLength(250)]
         public string ArchivoURL { get; set; }
         [Required, MaxLength(60)]
         public string ArchivoNombre { get; set; }

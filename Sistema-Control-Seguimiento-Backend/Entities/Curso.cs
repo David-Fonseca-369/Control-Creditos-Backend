@@ -17,7 +17,7 @@ namespace Sistema_Control_Seguimiento_Backend.Entities
         public DateTime FechaFin { get; set; }
         [Required]
         public int LimiteEstudiantes { get; set; }
-        [Required, MaxLength(60)]
+        [MaxLength(250)]
         public string FondoURL { get; set; }
         [Required]
         public int Estado { get; set; }
