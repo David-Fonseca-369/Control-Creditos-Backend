@@ -70,7 +70,7 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
                 var cursoPublicoDTO = mapper.Map<CursoPublicoDTO>(curso);
                 var solicitudEnviada = await context.Solicitudes
                     //vemos si ya está registrado aquí el alumno
-                    .AnyAsync(s => s.IdAlumno == idAlumno);
+                    .AnyAsync(s => s.IdAlumno == idAlumno && s.IdCurso == curso.Id);
                     cursoPublicoDTO.SolicitudEnviada = solicitudEnviada;
                     cursosPublicosDTO.Add(cursoPublicoDTO);
             }
