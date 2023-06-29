@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sistema_Control_Seguimiento_Backend.DTOs;
@@ -10,6 +11,7 @@ using Sistema_Control_Seguimiento_Backend.Token;
 
 namespace Sistema_Control_Seguimiento_Backend.Controllers
 {
+    [Authorize]
     [Route("api/cursos")]
     [ApiController]
     public class CursosController : ControllerBase
@@ -46,8 +48,8 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
         }
         
         //GET api/curso/PublicosPaginacion
-        [HttpGet("publicosPaginacion")]
-        public async Task<ActionResult<List<CursoPublicoDTO>>> PublicosPaginacion([FromQuery] PaginacionDTO paginacionDTO)
+        [HttpGet("publicosPaginacion/{idAlumno:int}")]
+        public async Task<ActionResult<List<CursoPublicoDTO>>> PublicosPaginacion(int idAlumno, [FromQuery] PaginacionDTO paginacionDTO)
         {
             var queryable = context.Cursos
                 .Include(x => x.CreadoPor)
@@ -55,11 +57,25 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
                 .OrderByDescending(x => x.UltimaModificacion)
                 .AsQueryable();
 
+            //consultar si ya se ha creado una soolicitud (solicitudes) por medio de un 
+
             await HttpContext.InsertarParametrosPaginacionEnCabeceraAsync(queryable);
 
             var cursos = await queryable.Paginar(paginacionDTO).ToListAsync();
 
-            return mapper.Map<List<CursoPublicoDTO>>(cursos);
+            var cursosPublicosDTO = new List<CursoPublicoDTO>();
+
+            foreach (var curso in cursos)
+            {
+                var cursoPublicoDTO = mapper.Map<CursoPublicoDTO>(curso);
+                var solicitudEnviada = await context.Solicitudes
+                    //vemos si ya está registrado aquí el alumno
+                    .AnyAsync(s => s.IdAlumno == idAlumno);
+                    cursoPublicoDTO.SolicitudEnviada = solicitudEnviada;
+                    cursosPublicosDTO.Add(cursoPublicoDTO);
+            }
+
+            return cursosPublicosDTO;
         }
 
 
@@ -119,6 +135,19 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
             return cursoPreviewDTO;
 
         }
+
+        //GET api/curso/obtenerArchivosCurso/{idCurso:int}
+        [HttpGet("obtenerArchivosCurso/{idCurso:int}")]
+        public async Task<ActionResult<List<ArchivoCursoDTO>>> ObtenerArchivosCurso(int idCurso)
+        {
+            //consulto los archivos adjuntos
+            var archivos = await context.ArchivosCursos
+                .Where(x => x.IdCurso == idCurso)
+                .ToListAsync();
+
+            return mapper.Map<List<ArchivoCursoDTO>>(archivos);
+        }
+
 
         //POST api/cursos/crear
         [HttpPost("crear")]

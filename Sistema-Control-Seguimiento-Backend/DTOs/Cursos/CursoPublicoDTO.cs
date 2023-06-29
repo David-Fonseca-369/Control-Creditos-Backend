@@ -11,6 +11,7 @@
         public DateTime FechaFin { get; set; }
         public int LimiteEstudiantes { get; set; }
         public int Inscritos { get; set; }
-        public string FondoURL { get; set; }      
+        public string FondoURL { get; set; }
+        public bool SolicitudEnviada { get; set; }
     }
 }

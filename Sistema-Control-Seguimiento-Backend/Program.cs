@@ -61,6 +61,8 @@ namespace Sistema_Control_Seguimiento_Backend
                 mapperConfig.AddProfile(new UsuarioProfile());
                 mapperConfig.AddProfile(new AlumnoProfile());
                 mapperConfig.AddProfile(new CursoProfile());
+                mapperConfig.AddProfile(new SolicitudProfile());
+
             });
 
             //actimos la caché para tener acceso a los servicios del sistema

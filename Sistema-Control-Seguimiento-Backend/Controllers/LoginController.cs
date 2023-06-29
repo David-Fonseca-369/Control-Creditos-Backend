@@ -71,7 +71,7 @@ namespace Sistema_Control_Seguimiento_Backend.Controllers
 
             var claims = new List<Claim>()
             {
-                new Claim("idUsuario",alumno.Id.ToString()),
+                new Claim("idAlumno",alumno.Id.ToString()),
                 new Claim("rol", "Alumno"),
                 new Claim("correo", alumno.Correo),
 

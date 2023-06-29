@@ -15,7 +15,6 @@ namespace Sistema_Control_Seguimiento_Backend.Profiles
             CreateMap<Curso, CursoPublicoDTO>()
                 .ForMember(x => x.NombreInstructor, x => x.MapFrom(c => $"{c.CreadoPor.Nombre} {c.CreadoPor.ApellidoPaterno} {c.CreadoPor.ApellidoPaterno}"));
                 
-
             CreateMap<ArchivosCurso, ArchivoCursoDTO>();
         }
     }

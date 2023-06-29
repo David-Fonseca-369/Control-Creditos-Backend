@@ -19,7 +19,8 @@ namespace Sistema_Control_Seguimiento_Backend
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new AlumnoMap());
             modelBuilder.ApplyConfiguration(new CursoMap());
-            modelBuilder.ApplyConfiguration(new ArchivosCursoMap());    
+            modelBuilder.ApplyConfiguration(new ArchivosCursoMap());
+            modelBuilder.ApplyConfiguration(new SolicitudMap());
         }
 
         public DbSet<Rol> Roles { get; set; }
@@ -27,5 +28,7 @@ namespace Sistema_Control_Seguimiento_Backend
         public DbSet<Alumno> Alumnos { get; set; }
         public DbSet<Curso> Cursos { get; set; }
         public DbSet<ArchivosCurso> ArchivosCursos { get; set; }
+        public DbSet<Solicitud> Solicitudes { get; set; }
+
     }
 }
